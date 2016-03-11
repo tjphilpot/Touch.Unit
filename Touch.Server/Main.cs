@@ -152,6 +152,7 @@ class SimpleListener {
 		string log_file = null;
 		string launchdev = null;
 		string launchsim = null;
+		string sdk = null;
 		bool autoexit = false;
 		string device_name = String.Empty;
 		string device_type = String.Empty;
@@ -173,6 +174,7 @@ class SimpleListener {
 			{ "device=", "Specifies the device type to launch the simulator", v => device_type = v },
 			{ "timeout=", "Specifies a timeout (in minutes), after which the simulator app will be killed (ignored for device runs)", v => timeout = TimeSpan.FromMinutes (double.Parse (v)) },
 			{ "startup-timeout=", "Specifies a timeout (in seconds) for the simulator app to connect to Touch.Server (ignored for device runs)", v => startup_timeout = TimeSpan.FromSeconds (double.Parse (v)) },
+			{ "sdk=", "Specifies which version of the SDK to user.", v => sdk = v },
 			{ "mtouch-argument=", "Specifies an extra mtouch argument when launching the application", v => mtouch_arguments.Add (v) },
 		};
 		
@@ -279,6 +281,8 @@ class SimpleListener {
 						procArgs.Append (Quote (launchsim));
 						if (!string.IsNullOrEmpty (device_type))
 							procArgs.Append (" --device ").Append (device_type);
+						if (!string.IsNullOrEmpty(sdk))
+							procArgs.Append(" --sdk=").Append(sdk);
 						procArgs.Append (" -argument=-connection-mode -argument=none");
 						procArgs.Append (" -argument=-app-arg:-autostart");
 						procArgs.Append (" -argument=-app-arg:-autoexit");
