@@ -275,7 +275,6 @@ class SimpleListener {
 					{
 						proc = new Process ();
 						int pid = 0;
-						StringBuilder output = new StringBuilder ();
 						StringBuilder procArgs = new StringBuilder ();
 						string sdk_root = Environment.GetEnvironmentVariable ("XCODE_DEVELOPER_ROOT");
 						if (!String.IsNullOrEmpty (sdk_root))
