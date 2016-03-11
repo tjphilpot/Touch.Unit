@@ -181,7 +181,10 @@ class SimpleListener {
 		try {
 			os.Parse (args);
 			if (help)
+			{
 				ShowHelp (os);
+				return 0;
+			}
 			
 			var listener = new SimpleListener ();
 			
